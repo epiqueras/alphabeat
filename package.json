@@ -1,0 +1,26 @@
+{
+  "name": "alphabeat",
+  "version": "1.0.0",
+  "description": "A tool for making music with letters.",
+  "main": "out/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epiqueras/alphabeat.git"
+  },
+  "keywords": [
+    "Music",
+    "Alphabet",
+    "Web",
+    "Audio",
+    "Game"
+  ],
+  "author": "epiqueras",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epiqueras/alphabeat/issues"
+  },
+  "homepage": "https://github.com/epiqueras/alphabeat#readme"
+}
