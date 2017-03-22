@@ -1,7 +1,7 @@
 {
   "name": "alphabeat",
   "version": "1.0.0",
-  "description": "A tool for making music with letters.",
+  "description": "A tool for making music from letters. Inspired by Kyle Stetz's Typedrummer.",
   "main": "out/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
