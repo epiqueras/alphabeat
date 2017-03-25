@@ -1,10 +1,22 @@
 html,
 body {
   font-size: #{$base-font-size};
+  font-family: 'Lobster', cursive;
 }
 
 body {
   @include themify {
     background: theme(background);
+  }
+}
+
+.title {
+  width: 100vw;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 3rem;
+
+  @include themify {
+    color: $theme-white;
   }
 }
