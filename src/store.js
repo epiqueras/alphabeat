@@ -1,8 +1,7 @@
 /* eslint-disable global-require */
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import { createStore, applyMiddleware, compose } from 'redux';
 
-import rootReducer from './reducer';
+import rootReducer from './rootReducer';
 
 export default function configureStore(initialState = {}) {
   const enhancers = [];
@@ -16,14 +15,16 @@ export default function configureStore(initialState = {}) {
       // eslint-disable-next-line no-console
       console.error(`${action} didn't lead to creation of a new state object`)
     )));
+    const DevTools = require('./modules/App/DevTools').default;
+    enhancers.push(DevTools.instrument());
   }
 
-  enhancers.push(applyMiddleware(...middleware));
+  enhancers.unshift(applyMiddleware(...middleware));
 
-  const store = createStore(rootReducer, initialState, composeWithDevTools(...enhancers));
+  const store = createStore(rootReducer, initialState, compose(...enhancers));
 
   if (module.hot) {
-    module.hot.accept('./reducer', () => {
+    module.hot.accept('./rootReducer', () => {
       store.replaceReducer(rootReducer);
     });
   }
