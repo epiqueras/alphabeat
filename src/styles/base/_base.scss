@@ -1,0 +1,10 @@
+html,
+body {
+  font-size: #{$base-font-size};
+}
+
+body {
+  @include themify {
+    background: theme(background);
+  }
+}
