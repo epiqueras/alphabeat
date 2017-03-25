@@ -1,0 +1,37 @@
+.key {
+  width: 70px;
+  height: 50px;
+  border: 2px inset;
+  border-radius: 10px;
+  flex: 0 1 auto;
+  margin: 4.5px;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Lobster', cursive;
+  font-size: 1.5rem;
+
+  @include themify {
+    color: lighten(theme("font-color"), 10%);
+  }
+
+  &.space {
+    flex: 1 1 100%;
+  }
+
+  &:hover {
+    @include themify {
+      background: darken(theme("keyboard-background"), 10%);
+      color: theme("font-color");
+    }
+  }
+
+  &:active {
+    border: 4px inset;
+  }
+
+  @media (max-width: 890px) {
+    width: 50px;
+    height: 40px;
+  }
+}

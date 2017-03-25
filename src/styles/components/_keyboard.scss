@@ -1,0 +1,66 @@
+.keyboard {
+  position: fixed;
+  width: 90vw;
+  max-width: 1100px;
+  min-width: 555px;
+  height: 40vh;
+  min-height: 270px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -245px;
+  transition: bottom 2s;
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+  border: 8px outset;
+
+  &.open {
+    bottom: 10px;
+  }
+
+  @include themify {
+    background-color: theme("keyboard-background");
+    color: theme("keyboard-font");
+  }
+
+  .up-arrow {
+    font-size: 1.2rem;
+    font-weight: bold;
+    outline: none;
+    background: none;
+    border: 1px outset;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:hover {
+      @include themify {
+        background: darken(theme("keyboard-background"), 10%);
+      }
+    }
+
+    &:active {
+      border: 2px outset;
+    }
+  }
+
+  .keys {
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+  }
+
+  @media (min-width: 1145px) {
+    height: 35vh;
+  }
+
+  @media (max-width: 1145px) {
+    width: 80vw;
+  }
+
+  @media (max-width: 890px) {
+    width: 75vw;
+    height: 41vh;
+  }
+}
