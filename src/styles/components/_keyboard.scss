@@ -13,14 +13,15 @@
   padding: 5px;
   border-radius: 10px;
   border: 8px outset;
+  user-select: none;
 
   &.open {
     bottom: 10px;
   }
 
   @include themify {
-    background-color: theme("keyboard-background");
-    color: theme("keyboard-font");
+    background-color: theme(keyboard-background);
+    color: theme(font);
   }
 
   .up-arrow {
@@ -34,7 +35,7 @@
 
     &:hover {
       @include themify {
-        background: darken(theme("keyboard-background"), 10%);
+        background: darken(theme(keyboard-background), 10%);
       }
     }
 

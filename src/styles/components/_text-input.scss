@@ -1,0 +1,49 @@
+.text-input {
+  width: 80vw;
+  max-width: 80vw;
+  margin: 8vw calc(10vw - 10px - 10px);
+  padding: 10px;
+  height: 50vh;
+  max-height: 50vh;
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+
+  @include themify {
+    background: theme(input-background);
+    border: 10px groove theme(input-border);
+    color: theme(font);
+  }
+}
+
+.play-pause {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  text-shadow:
+    4px 4px 3px rgba(0, 0, 0, 0.4),
+    8px 8px 13px rgba(0, 0, 0, 0.1),
+    18px 18px 23px rgba(0, 0, 0, 0.1);
+  outline: none;
+  background: none;
+  border: none;
+  user-select: none;
+
+  &.paused {
+    right: 0;
+    font-size: 1rem;
+  }
+
+  &:active {
+    text-shadow: none;
+  }
+
+  @include themify {
+    color: theme(play-pause);
+  }
+}

@@ -12,7 +12,7 @@
   font-size: 1.5rem;
 
   @include themify {
-    color: lighten(theme("font-color"), 10%);
+    color: lighten(theme(font), 10%);
   }
 
   &.space {
@@ -21,8 +21,8 @@
 
   &:hover {
     @include themify {
-      background: darken(theme("keyboard-background"), 10%);
-      color: theme("font-color");
+      background: darken(theme(keyboard-background), 10%);
+      color: theme(font);
     }
   }
 

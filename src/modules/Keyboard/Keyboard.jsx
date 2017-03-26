@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { toggleBoard } from './components/boardActions';
+import { toggleBoard } from './keyboardActions';
 import { getBoardIsOpen } from './keyboardReducer';
 
 import Board from './components/Board';
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    doToggleBoard: () => dispatch(toggleBoard()),
+    doToggleBoard: isOpen => dispatch(toggleBoard(isOpen)),
   };
 }
 

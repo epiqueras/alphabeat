@@ -1,15 +1,18 @@
 import React, { PropTypes } from 'react';
 
-import Key from './Key/Key';
+import { alphabet } from '../keyboardReducer';
 
-const alphabet = 'abcdefghijklmnopqrstuvwyz'.split('');
-alphabet.push('space');
+import Key from './Key';
 
 const Board = ({ boardIsOpen, doToggleBoard }) => { // eslint-disable-line
+  function arrowClickHandler() {
+    doToggleBoard(!boardIsOpen);
+  }
+
   const keys = alphabet.map(letter => <Key key={letter} letter={letter} />);
   return (
-    <div className={`keyboard ${boardIsOpen ? 'open' : ''}`}>
-      <button className="up-arrow" onClick={doToggleBoard}>&#x25b2;</button>
+    <div className={`keyboard${boardIsOpen ? ' open' : ''}`}>
+      <button className="up-arrow" onClick={arrowClickHandler}>&#x25b2;</button>
       <div className="keys">{keys}</div>
     </div>
   );

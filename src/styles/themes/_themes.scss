@@ -1,7 +1,11 @@
 $themes: (
   default: (
     background: $theme-purple,
+    title: $theme-white,
+    play-pause: $theme-white,
+    font: $theme-black,
     keyboard-background: $theme-white,
-    font-color: $theme-black,
+    input-background: darken($theme-white, 3%),
+    input-border: saturate(lighten($theme-purple, 50%), 15%),
   ),
 );
