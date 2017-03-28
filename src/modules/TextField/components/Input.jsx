@@ -11,16 +11,20 @@ class Input extends Component {
       input: 'abc',
       sounds: Object.keys(keys).reduce((obj, letter) => {
         const config = keys[letter];
-        obj[letter] = new Pizzicato.Sound({
-          source: 'wave',
-          options: {
-            type: config.type,
-            frequency: config.frequency,
-            volume: config.volume,
-            release: config.release,
-            attack: config.attack,
-          },
-        });
+        obj[letter] = {
+          sound: new Pizzicato.Sound({
+            source: 'wave',
+            options: {
+              type: config.type,
+              frequency: config.frequency,
+              volume: config.volume,
+              release: config.release,
+              attack: config.attack,
+            },
+          }),
+          effects: config.effects.map(effect => new Pizzicato.Effects[effect.name](effect.config)),
+        };
+        obj[letter].effects.forEach(effect => obj[letter].sound.addEffect(effect));
         return obj;
       }, {}),
     };
@@ -41,7 +45,7 @@ class Input extends Component {
         letter = /\s/.test(letter) ? 'space' : letter.toLowerCase();
         if (this.props.keys[letter]) {
           const { duration, rest } = this.props.keys[letter];
-          await playSound(this.state.sounds[letter], duration, rest);
+          await playSound(this.state.sounds[letter].sound, duration, rest);
         }
         index += 1;
       }

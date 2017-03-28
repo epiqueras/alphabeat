@@ -1,0 +1,48 @@
+.modal {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  height: 90vh;
+  border-radius: 5px;
+  display: none;
+
+  .open {
+    display: block;
+  }
+
+  @include themify {
+    background: theme(modal-background);
+  }
+
+  .modal-icons {
+    width: 22px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .modal-close {
+      width: 11px;
+      height: 11px;
+      border-radius: 5.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include themify {
+        background: theme(modal-close);
+      }
+
+      &:hover::before {
+        content: "\2715";
+        font-family: Arial;
+        font-size: 8px;
+        line-height: 11px;
+        color: rgba(black, 0.5);
+      }
+    }
+  }
+}

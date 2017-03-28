@@ -5,7 +5,10 @@ $themes: (
     play-pause: $theme-white,
     font: $theme-black,
     keyboard-background: $theme-white,
+    keyboard-details: lighten($theme-black, 50%),
     input-background: darken($theme-white, 3%),
     input-border: saturate(lighten($theme-purple, 50%), 15%),
+    modal-background: $theme-white,
+    modal-close: $theme-red,
   ),
 );

@@ -3,6 +3,7 @@ import React from 'react';
 
 import TextField from '../TextField/TextField';
 import Keyboard from '../Keyboard/Keyboard';
+import Modal from '../Modal/Modal';
 
 let DevTools = () => <span />;
 
@@ -16,6 +17,7 @@ const App = () => (
     <a href="/"><div className="title">Alphabeat</div></a>
     <TextField />
     <Keyboard />
+    <Modal />
   </div>
 );
 

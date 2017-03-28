@@ -52,6 +52,24 @@
     justify-content: center;
   }
 
+  .keyboard-details {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    float: left;
+
+    &.second {
+      left: 20px;
+    }
+
+    @include themify {
+      background: theme(keyboard-details);
+    }
+  }
+
   @media (min-width: 1145px) {
     height: 35vh;
   }

@@ -10,12 +10,21 @@ const initialState = {
     obj[letter] = {
       duration: 1000,
       rest: 500,
-      type: 'sine',
+      type: 'sawtooth',
       frequency: 440,
       volume: 1,
       release: 0.4,
       attack: 0.4,
-      effects: [],
+      effects: [
+        {
+          name: 'RingModulator',
+          config: {
+            speed: 30,
+            distortion: 20,
+            mix: 0.5,
+          },
+        },
+      ],
     };
     return obj;
   }, {}),
