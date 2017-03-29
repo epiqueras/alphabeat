@@ -1,16 +1,25 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const Key = ({ letter, doToggleModal }) => {
-  function keyClickHandler() {
+class Key extends Component {
+  constructor(props) {
+    super(props);
+    this.keyClickHandler = this.keyClickHandler.bind(this);
+  }
+
+  keyClickHandler() {
+    const { doToggleModal, letter } = this.props;
     doToggleModal(letter);
   }
 
-  return (
-    <button className={`key${letter === 'space' ? ' space' : ''}`} onClick={keyClickHandler}>
-      {letter}
-    </button>
-  );
-};
+  render() {
+    const { letter } = this.props;
+    return (
+      <button className={`key${letter === 'space' ? ' space' : ''}`} onClick={this.keyClickHandler}>
+        {letter}
+      </button>
+    );
+  }
+}
 
 Key.propTypes = {
   letter: PropTypes.string.isRequired,
