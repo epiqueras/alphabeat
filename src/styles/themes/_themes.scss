@@ -10,5 +10,7 @@ $themes: (
     input-border: saturate(lighten($theme-purple, 50%), 15%),
     modal-background: $theme-white,
     modal-close: $theme-red,
+    tabs-border: lighten($theme-black, 50%),
+    tab-border: lighten($theme-black, 50%),
   ),
 );

@@ -7,7 +7,7 @@
   border-radius: 5px;
   display: none;
 
-  .open {
+  &.open {
     display: block;
   }
 
@@ -22,6 +22,13 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    border-width: 0 0 2px;
+    border-style: solid;
+    padding: 5px;
+
+    @include themify {
+      border-color: theme(tabs-border);
+    }
 
     .modal-close {
       width: 11px;
@@ -31,6 +38,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border: none;
+      outline: none;
+      padding: 0;
 
       @include themify {
         background: theme(modal-close);
@@ -43,6 +53,54 @@
         line-height: 11px;
         color: rgba(black, 0.5);
       }
+    }
+  }
+
+  .tabs {
+    position: absolute;
+    width: calc(100% - 32px);
+    height: 30px;
+    top: 0;
+    left: 22px;
+    font-family: 'Raleway', sans-serif;
+    padding: 0 0 0 10px;
+    display: flex;
+    border-width: 0 0 2px;
+    border-style: solid;
+
+    @include themify {
+      border-color: theme(tabs-border);
+    }
+
+    .tab {
+      border-width: 0 1px 0 0;
+      border-style: solid;
+      padding: 5px;
+      height: 20px;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+      background: none;
+      box-sizing: content-box;
+      font-family: 'Raleway', sans-serif;
+      outline: none;
+
+      @include themify {
+        border-color: theme(tab-border);
+      }
+
+      &:hover,
+      &.active {
+        @include themify {
+          background: theme(tabs-border);
+        }
+      }
+    }
+
+    .add-effect {
+      width: 20px;
+      line-height: 20px;
+      font-size: 25px;
     }
   }
 }
