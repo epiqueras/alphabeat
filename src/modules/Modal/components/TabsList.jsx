@@ -53,7 +53,7 @@ class TabsList extends Component {
         />
       );
     }) : '';
-    return connectDropTarget(<div>{tabs}<DraggedTabLayer /></div>);
+    return connectDropTarget(<div className="scrollable-tabs">{tabs}<DraggedTabLayer /></div>);
   }
 }
 

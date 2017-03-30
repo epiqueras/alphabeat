@@ -12,5 +12,7 @@ $themes: (
     modal-close: $theme-red,
     tabs-border: lighten($theme-black, 50%),
     tab-border: lighten($theme-black, 50%),
+    new-tab-list-background: $theme-white,
+    new-tab-list-item-border: $theme-black,
   ),
 );

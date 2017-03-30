@@ -1,7 +1,8 @@
-/* eslint-disable no-case-declarations */
 import update from 'react/lib/update';
 
 import { TOGGLE_BOARD, MOVE_EFFECT, MAKE_EFFECT } from './keyboardActions';
+
+import { soundConfig } from '../soundConfigs';
 
 const alphabet = 'abcdefghijklmnopqrstuvwyz'.split('');
 alphabet.push('space');
@@ -11,13 +12,13 @@ const initialState = {
   boardIsOpen: true,
   keys: alphabet.reduce((obj, letter) => {
     obj[letter] = {
-      duration: 1000,
-      rest: 500,
-      type: 'sawtooth',
-      frequency: 440,
-      volume: 1,
-      release: 0.4,
-      attack: 0.4,
+      duration: soundConfig.duration.default,
+      rest: soundConfig.rest.default,
+      type: soundConfig.type.default,
+      frequency: soundConfig.frequency.default,
+      volume: soundConfig.volume.default,
+      release: soundConfig.release.default,
+      attack: soundConfig.attack.default,
       effects: [
         {
           name: 'RingModulator',
@@ -77,7 +78,9 @@ const keyboardReducer = (state = initialState, action) => {
           ...state.keys,
           [action.letter]: {
             ...state.keys[action.letter],
-            effects: [...state.keys[action.letter].effects, { name: action.name }],
+            effects: [
+              ...state.keys[action.letter].effects, { name: action.name, config: action.config },
+            ],
           },
         },
       };

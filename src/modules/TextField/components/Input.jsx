@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Pizzicato from 'pizzicato';
 
-import playSound from '../playSound';
+import { playSound, parseKeys, updateSounds } from '../utils';
 
 class Input extends Component {
   constructor(props) {
@@ -9,30 +8,24 @@ class Input extends Component {
     const { keys } = props;
     this.state = {
       input: 'abc',
-      sounds: Object.keys(keys).reduce((obj, letter) => {
-        const config = keys[letter];
-        obj[letter] = {
-          sound: new Pizzicato.Sound({
-            source: 'wave',
-            options: {
-              type: config.type,
-              frequency: config.frequency,
-              volume: config.volume,
-              release: config.release,
-              attack: config.attack,
-            },
-          }),
-          effects: config.effects.map(effect => new Pizzicato.Effects[effect.name](effect.config)),
-        };
-        obj[letter].effects.forEach(effect => obj[letter].sound.addEffect(effect));
-        return obj;
-      }, {}),
+      sounds: parseKeys(keys),
     };
     this.handleInput = this.handleInput.bind(this);
     this.playMusic = this.playMusic.bind(this);
     this.playOrPause = this.playOrPause.bind(this);
+    this.onKeysUpdate = this.onKeysUpdate.bind(this);
 
     this.playMusic();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.keys !== this.props.keys) {
+      this.onKeysUpdate();
+    }
+  }
+
+  onKeysUpdate() {
+    this.setState({ sounds: updateSounds(this.props.keys, this.state.sounds) });
   }
 
   async playMusic() {

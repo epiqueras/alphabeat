@@ -1,6 +1,9 @@
+/* eslint-disable */
 import React, { Component, PropTypes } from 'react';
 
 import TabsList from './TabsList';
+
+import { effectConfigs } from '../../soundConfigs';
 
 class Window extends Component {
   constructor(props) {
@@ -13,6 +16,7 @@ class Window extends Component {
     this.letterClickHandler = this.letterClickHandler.bind(this);
     this.doMoveLetterEffect = this.doMoveLetterEffect.bind(this);
     this.handleAddButton = this.handleAddButton.bind(this);
+    this.handleNewEffect = this.handleNewEffect.bind(this);
   }
 
   closeClickHandler() {
@@ -29,14 +33,22 @@ class Window extends Component {
   }
 
   handleAddButton() {
-    this.setState({ newTabForm: true });
-    // this.props.doMakeEffect(this.props.openLetter, 'RadioHead');
-    // TODO: Create default effect configs
-    // TODO: Create new tab form
+    this.setState({ newTabForm: !this.state.newTabForm });
+  }
+
+  handleNewEffect(event) {
+    const { doMakeEffect, openLetter } = this.props;
+    doMakeEffect(openLetter, event.target.textContent);
   }
 
   render() {
     const { openLetter, openTab, letterConfig, doChangeTab } = this.props;
+    const { newTabForm } = this.state;
+
+    const effectsListItems = letterConfig.effects ? Object.keys(effectConfigs)
+      .filter(effectName => !letterConfig.effects.find(effect => effect.name === effectName))
+      .map(effectName => <li key={effectName} onClick={this.handleNewEffect}>{effectName}</li>) : '';
+
     return (
       <div className={`modal${openLetter ? ' open' : ''}`}>
         <div className="modal-icons">
@@ -55,7 +67,12 @@ class Window extends Component {
             doChangeTab={doChangeTab}
             doMoveLetterEffect={this.doMoveLetterEffect}
           />
-          <button className="tab add-effect" onClick={this.handleAddButton}>+</button>
+          {effectsListItems && effectsListItems.length > 0 ?
+            <button className="tab add-effect" onClick={this.handleAddButton}>{newTabForm ? '\u25B8' : '+'}</button>
+          :
+            ''
+          }
+          {newTabForm ? <ul className="new-tab-list">{effectsListItems}</ul> : ''}
         </div>
       </div>
     );

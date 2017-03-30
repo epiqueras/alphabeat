@@ -72,6 +72,15 @@
       border-color: theme(tabs-border);
     }
 
+    .scrollable-tabs {
+      display: flex;
+      overflow-x: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
     .tab {
       border-width: 0 1px 0 0;
       border-style: solid;
@@ -84,6 +93,7 @@
       box-sizing: content-box;
       font-family: 'Raleway', sans-serif;
       outline: none;
+      border-radius: 0 5px;
 
       @include themify {
         border-color: theme(tab-border);
@@ -101,6 +111,39 @@
       width: 20px;
       line-height: 20px;
       font-size: 25px;
+    }
+
+    .new-tab-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 5px;
+      user-select: none;
+      cursor: pointer;
+      font-size: 11px;
+
+      @include themify {
+        color: theme(font);
+      }
+
+      li {
+        margin: 5px 0;
+        border-style: solid;
+        border-width: 1px 0;
+        padding: 5px 0;
+
+        @include themify {
+          background: theme(new-tab-list-background);
+          border-color: theme(new-tab-list-item-border);
+        }
+
+        &:hover {
+          padding: 10px 0;
+
+          @include themify {
+            color: darken(theme(font), 100%);
+          }
+        }
+      }
     }
   }
 }
