@@ -1,7 +1,7 @@
 export const soundConfig = {
   duration: { min: 1, max: 5000, default: 1000 },
   rest: { min: 1, max: 5000, default: 5000 },
-  path: { options: ['sine', 'square', 'triangle', 'sawtooth'], default: 'sine' },
+  sample: { options: ['sine', 'square', 'triangle', 'sawtooth'], default: '808/claves.aif' },
   volume: { min: 0, max: 1, default: 1 },
   release: { min: 0, max: 5, default: 0.4 },
   attack: { min: 0, max: 5, default: 0.4 },

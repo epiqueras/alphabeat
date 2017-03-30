@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
 import Pizzicato from 'pizzicato';
 
 export function playSound(sound, time, rest) {
@@ -18,7 +20,7 @@ export function parseKeys(keys) {
       sound: new Pizzicato.Sound({
         source: 'file',
         options: {
-          path: config.path,
+          path: require(`../../samples/${config.sample}`),
           volume: config.volume,
           release: config.release,
           attack: config.attack,
