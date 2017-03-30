@@ -48,8 +48,8 @@ class Window extends Component {
 
   doDeleteOpenEffect() {
     const { doDeleteEffect, openLetter, openTab } = this.props;
-    doDeleteEffect(openLetter, openTab);
     this.letterClickHandler();
+    doDeleteEffect(openLetter, openTab);
   }
 
   handleAddButton() {
