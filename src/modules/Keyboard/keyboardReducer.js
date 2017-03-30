@@ -1,6 +1,6 @@
 import update from 'react/lib/update';
 
-import { TOGGLE_BOARD, MOVE_EFFECT, MAKE_EFFECT } from './keyboardActions';
+import { TOGGLE_BOARD, MOVE_EFFECT, MAKE_EFFECT, UPDATE_SOUND, UPDATE_EFFECT, DELETE_EFFECT } from './keyboardActions';
 
 import { soundConfig } from '../soundConfigs';
 
@@ -31,8 +31,8 @@ const initialState = {
         {
           name: 'PingPongDelay',
           config: {
-            speed: 30,
-            distortion: 20,
+            feedback: 30,
+            time: 0.5,
             mix: 0.5,
           },
         },
@@ -81,6 +81,48 @@ const keyboardReducer = (state = initialState, action) => {
             effects: [
               ...state.keys[action.letter].effects, { name: action.name, config: action.config },
             ],
+          },
+        },
+      };
+    case UPDATE_SOUND:
+      return {
+        ...state,
+        keys: {
+          ...state.keys,
+          [action.letter]: {
+            ...state.keys[action.letter],
+            [action.key]: action.value,
+          },
+        },
+      };
+    case UPDATE_EFFECT:
+      return {
+        ...state,
+        keys: {
+          ...state.keys,
+          [action.letter]: {
+            ...state.keys[action.letter],
+            effects: state.keys[action.letter].effects.map((effect) => {
+              if (effect.name === action.name) {
+                return {
+                  ...effect,
+                  config: { ...effect.config, [action.key]: action.value },
+                };
+              }
+              return effect;
+            }),
+          },
+        },
+      };
+    case DELETE_EFFECT:
+      return {
+        ...state,
+        keys: {
+          ...state.keys,
+          [action.letter]: {
+            ...state.keys[action.letter],
+            effects: state.keys[action.letter].effects
+              .filter(effect => effect.name !== action.name),
           },
         },
       };

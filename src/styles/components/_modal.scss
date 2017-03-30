@@ -128,8 +128,11 @@
       li {
         margin: 5px 0;
         border-style: solid;
-        border-width: 1px 0;
+        border-width: 1px;
         padding: 5px 0;
+        z-index: 100;
+        position: relative;
+        text-align: center;
 
         @include themify {
           background: theme(new-tab-list-background);

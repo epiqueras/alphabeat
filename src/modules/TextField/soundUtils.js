@@ -67,7 +67,6 @@ export function updateSounds(keys, sounds) {
     // Get rid of deleted effects.
     effects.forEach((effect) => { // Loop over effects array.
       const { name, obj } = effect; // Get effect name and obj.
-
       // Remove effect if not found in config.
       if (!newConfig.effects.find(effectConfig => effectConfig.name === name)) {
         sound.removeEffect(obj);

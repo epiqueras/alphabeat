@@ -14,5 +14,6 @@ $themes: (
     tab-border: lighten($theme-black, 50%),
     new-tab-list-background: $theme-white,
     new-tab-list-item-border: $theme-black,
+    delete-button: $theme-red,
   ),
 );

@@ -65,7 +65,7 @@ export const effectConfigs = {
   Reverb: {
     time: { min: 0.0001, max: 10, default: 0.01 },
     decay: { min: 0, max: 10, default: 0.01 },
-    reverse: false,
+    // reverse: false,
     mix: { min: 0, max: 1, default: 0.5 },
   },
   RingModulator: {

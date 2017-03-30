@@ -1,0 +1,43 @@
+.settings {
+  width: 100%;
+  height: calc(90vh - 71px);
+  text-align: center;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+
+  input {
+    width: 80%;
+  }
+
+  span {
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px outset;
+
+    @include themify {
+      background: theme(delete-button);
+    }
+
+    &:hover {
+      border: 2px inset;
+    }
+
+    &:active {
+      border: 3px inset;
+    }
+  }
+}

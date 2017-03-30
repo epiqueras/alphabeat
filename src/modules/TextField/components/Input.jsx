@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import { playSound, parseKeys, updateSounds } from '../utils';
+import { playSound, parseKeys, updateSounds } from '../soundUtils';
 
 class Input extends Component {
   constructor(props) {
