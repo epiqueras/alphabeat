@@ -14,8 +14,7 @@ const initialState = {
     obj[letter] = {
       duration: soundConfig.duration.default,
       rest: soundConfig.rest.default,
-      type: soundConfig.type.default,
-      frequency: soundConfig.frequency.default,
+      path: soundConfig.path.default,
       volume: soundConfig.volume.default,
       release: soundConfig.release.default,
       attack: soundConfig.attack.default,

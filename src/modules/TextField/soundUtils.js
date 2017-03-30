@@ -16,10 +16,9 @@ export function parseKeys(keys) {
     const config = keys[letter];
     obj[letter] = {
       sound: new Pizzicato.Sound({
-        source: 'wave',
+        source: 'file',
         options: {
-          type: config.type,
-          frequency: config.frequency,
+          path: config.path,
           volume: config.volume,
           release: config.release,
           attack: config.attack,
@@ -40,8 +39,7 @@ export function updateSounds(keys, sounds) {
     const newConfig = keys[letter]; // Get the new config.
 
     // Update sound config.
-    sound.type = newConfig.type;
-    sound.frequency = newConfig.frequency;
+    sound.path = newConfig.path;
     sound.volume = newConfig.volume;
     sound.release = newConfig.release;
     sound.attack = newConfig.attack;

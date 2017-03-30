@@ -1,8 +1,7 @@
 export const soundConfig = {
   duration: { min: 1, max: 5000, default: 1000 },
   rest: { min: 1, max: 5000, default: 5000 },
-  type: { options: ['sine', 'square', 'triangle', 'sawtooth'], default: 'sine' },
-  frequency: { min: 0, max: 20000, default: 440 },
+  path: { options: ['sine', 'square', 'triangle', 'sawtooth'], default: 'sine' },
   volume: { min: 0, max: 1, default: 1 },
   release: { min: 0, max: 5, default: 0.4 },
   attack: { min: 0, max: 5, default: 0.4 },
