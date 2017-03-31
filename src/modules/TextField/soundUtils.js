@@ -4,7 +4,7 @@ import Pizzicato from 'pizzicato';
 
 export function playSound(sound, time, rest) {
   return new Promise((resolve) => {
-    if (sound) sound.play(0, 0);
+    if (sound && sound.getRawSourceNode) sound.play(0, 0);
     setTimeout(() => {
       if (sound) sound.stop();
       if (rest) setTimeout(resolve, rest);
@@ -20,7 +20,7 @@ export function parseKeys(keys) {
       sound: new Pizzicato.Sound({
         source: 'file',
         options: {
-          path: require(`../../samples/${config.sample}`),
+          path: require(`../../../samples/${config.sample}`),
           volume: config.volume,
           release: config.release,
           attack: config.attack,
@@ -37,16 +37,32 @@ export function parseKeys(keys) {
 
 export function updateSounds(keys, sounds) {
   return Object.keys(keys).reduce((soundsObj, letter) => { // Loop over letters.
-    const { sound, effects } = soundsObj[letter]; // Get the current sound obj and effects array.
     const newConfig = keys[letter]; // Get the new config.
+    const newPath = require(`../../../samples/${newConfig.sample}`);
+
+    // Check if file path has changed and create a new sound if it has changed.
+    if (soundsObj[letter].sound.path !== newPath) {
+      soundsObj[letter].sound = new Pizzicato.Sound({
+        source: 'file',
+        options: {
+          path: newPath,
+          volume: newConfig.volume,
+          release: newConfig.release,
+          attack: newConfig.attack,
+        },
+      });
+      // Readd effects.
+      soundsObj[letter].effects.forEach(effect => soundsObj[letter].sound.addEffect(effect.obj));
+    }
+
+    const { sound, effects } = soundsObj[letter]; // Get the current sound obj and effects array.
 
     // Update sound config.
-    sound.path = newConfig.path;
     sound.volume = newConfig.volume;
     sound.release = newConfig.release;
     sound.attack = newConfig.attack;
 
-    // Add and update effects.
+    // Add, delete and update effects.
     newConfig.effects.forEach((effectConfig) => { // Loop over newConfig effect configs.
       const { name, config } = effectConfig; // Get the name and config obj.
       const effectObj = effects.find(effect => effect.name === name); // Find matching effect.

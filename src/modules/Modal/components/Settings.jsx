@@ -22,7 +22,7 @@ const Settings = ({
         value={isSound ? openConfig[configKey] : openConfig.config[configKey]}
         min={range[configKey].options ? 0 : range[configKey].min}
         max={range[configKey].options ? 100 : range[configKey].max}
-        options={configKey === 'type' ? range.type.options : []}
+        options={range[configKey].options || []}
         doUpdate={isSound ? doUpdateLetterSound : doUpdateLetterEffect}
       />
     )) : '';

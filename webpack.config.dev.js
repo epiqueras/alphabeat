@@ -42,7 +42,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(jpe?g|png|gif|svg|eot|woff|ttf|svg|woff2|aif)$/,
+        test: /\.(jpe?g|png|gif|svg|eot|woff|ttf|svg|woff2|mp3)$/,
         use: ['file-loader'],
       },
       {

@@ -3,9 +3,10 @@ import React, { Component, PropTypes } from 'react';
 class Slider extends Component {
   constructor(props) {
     super(props);
+    const { value, max, options } = props;
     this.state = {
-      value: props.value,
-      textValue: '',
+      value: options.indexOf(value) * (max / options.length),
+      textValue: value,
     };
     this.handleSliderChange = this.handleSliderChange.bind(this);
   }
@@ -21,7 +22,7 @@ class Slider extends Component {
       this.setState({ value, textValue: options[index] });
       doUpdate(name, options[index]);
     } else {
-      this.setState({ value });
+      this.setState({ value, textValue: value });
       doUpdate(name, value);
     }
   }
