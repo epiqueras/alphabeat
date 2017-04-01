@@ -14,7 +14,6 @@ if (process.env.NODE_ENV === 'development') {
 const App = () => (
   <div className="app-root">
     <DevTools />
-    <a href="/"><div className="title">Alphabeat</div></a>
     <TextField />
     <Keyboard />
     <Modal />

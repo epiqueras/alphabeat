@@ -10,31 +10,31 @@ export { alphabet };
 
 const initialState = {
   boardIsOpen: true,
-  keys: alphabet.reduce((obj, letter) => {
+  keys: alphabet.reduce((obj, letter, index) => {
     obj[letter] = {
       duration: soundConfig.duration.default,
       rest: soundConfig.rest.default,
-      sample: soundConfig.sample.default,
+      sample: soundConfig.sample.options[index % soundConfig.sample.options.length],
       volume: soundConfig.volume.default,
       release: soundConfig.release.default,
       attack: soundConfig.attack.default,
       effects: [
-        {
-          name: 'RingModulator',
-          config: {
-            speed: 30,
-            distortion: 20,
-            mix: 0.5,
-          },
-        },
-        {
-          name: 'PingPongDelay',
-          config: {
-            feedback: 30,
-            time: 0.5,
-            mix: 0.5,
-          },
-        },
+        // {
+        //   name: 'RingModulator',
+        //   config: {
+        //     speed: 30,
+        //     distortion: 20,
+        //     mix: 0.5,
+        //   },
+        // },
+        // {
+        //   name: 'PingPongDelay',
+        //   config: {
+        //     feedback: 30,
+        //     time: 0.5,
+        //     mix: 0.5,
+        //   },
+        // },
       ],
     };
     return obj;

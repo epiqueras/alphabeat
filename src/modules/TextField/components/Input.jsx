@@ -7,7 +7,7 @@ class Input extends Component {
     super(props);
     const { keys } = props;
     this.state = {
-      input: 'abc',
+      input: 'Hello World',
       sounds: parseKeys(keys),
     };
     this.handleInput = this.handleInput.bind(this);
@@ -59,6 +59,7 @@ class Input extends Component {
     const { isPlaying } = this.props;
     return (
       <div>
+        <a href="/"><div className={`title${isPlaying ? ' title-dance' : ''}`}>Alphabeat</div></a>
         <button className={`play-pause${isPlaying ? ' paused' : ''}`} onClick={this.playOrPause}>{isPlaying ? '\u258C\u258C' : '\u25B6'}</button>
         <textarea className="text-input" value={input} onChange={this.handleInput} />
       </div>

@@ -27,3 +27,18 @@ body {
     color: theme(title);
   }
 }
+
+@keyframes dance {
+  from {
+    text-shadow:
+      0 3px 0 #b2a98f,
+      0 14px 10px rgba(0, 0, 0, 0.15),
+      0 24px 2px rgba(0, 0, 0, 0.1),
+      0 34px 30px rgba(0, 0, 0, 0.1);
+  }
+  to { text-shadow: none; }
+}
+
+.title-dance {
+  animation: dance 0.5s ease 0s infinite;
+}

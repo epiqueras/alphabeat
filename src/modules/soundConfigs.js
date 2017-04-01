@@ -1,6 +1,6 @@
 export const soundConfig = {
-  duration: { min: 1, max: 5000, default: 1000 },
-  rest: { min: 1, max: 5000, default: 5000 },
+  duration: { min: 1, max: 5000, default: 500 },
+  rest: { min: 1, max: 5000, default: 1 },
   sample: {
     options: [
       '808/cl_hihat.mp3',

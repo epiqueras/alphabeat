@@ -5,8 +5,8 @@ class Slider extends Component {
     super(props);
     const { value, max, options } = props;
     this.state = {
-      value: options.indexOf(value) * (max / options.length),
-      textValue: value,
+      value: typeof value === 'string' ? options.indexOf(value) * (max / options.length) : value,
+      textValue: typeof value === 'string' ? value : '',
     };
     this.handleSliderChange = this.handleSliderChange.bind(this);
   }
