@@ -3,6 +3,7 @@ import update from 'react/lib/update';
 import { TOGGLE_BOARD, MOVE_EFFECT, MAKE_EFFECT, UPDATE_SOUND, UPDATE_EFFECT, DELETE_EFFECT } from './keyboardActions';
 
 import { soundConfig } from '../soundConfigs';
+import getUrlParameter from '../urlUtils';
 
 const alphabet = 'abcdefghijklmnopqrstuvwyz'.split('');
 alphabet.push('space');
@@ -10,7 +11,7 @@ export { alphabet };
 
 const initialState = {
   boardIsOpen: true,
-  keys: alphabet.reduce((obj, letter, index) => {
+  keys: JSON.parse(getUrlParameter('c')) || alphabet.reduce((obj, letter, index) => {
     obj[letter] = {
       duration: soundConfig.duration.default,
       rest: soundConfig.rest.default,

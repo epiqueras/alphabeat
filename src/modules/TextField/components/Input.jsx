@@ -1,19 +1,23 @@
+/* global window */
+/* global document */
 import React, { Component, PropTypes } from 'react';
 
 import { playSound, parseKeys, updateSounds } from '../soundUtils';
+import getUrlParameter from '../../urlUtils';
 
 class Input extends Component {
   constructor(props) {
     super(props);
     const { keys } = props;
     this.state = {
-      input: 'Hello World',
+      input: getUrlParameter('t') || 'Hello World',
       sounds: parseKeys(keys),
     };
     this.handleInput = this.handleInput.bind(this);
     this.playMusic = this.playMusic.bind(this);
     this.playOrPause = this.playOrPause.bind(this);
     this.onKeysUpdate = this.onKeysUpdate.bind(this);
+    this.copyConfig = this.copyConfig.bind(this);
 
     this.playMusic();
   }
@@ -54,6 +58,32 @@ class Input extends Component {
     doTogglePlaying(!isPlaying);
   }
 
+  copyConfig() {
+    const { input } = this.state;
+    const { keys } = this.props;
+
+    const url = `${window.location.origin}/?t=${input}&c=${JSON.stringify(keys)}`;
+
+    const textArea = document.createElement('textarea');
+
+    textArea.style.position = 'fixed';
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = 0;
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+
+    textArea.value = url;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  }
+
   render() {
     const { input } = this.state;
     const { isPlaying } = this.props;
@@ -61,6 +91,7 @@ class Input extends Component {
       <div>
         <a href="/"><div className={`title${isPlaying ? ' title-dance' : ''}`}>Alphabeat</div></a>
         <button className={`play-pause${isPlaying ? ' paused' : ''}`} onClick={this.playOrPause}>{isPlaying ? '\u258C\u258C' : '\u25B6'}</button>
+        <button className="share" onClick={this.copyConfig}>share</button>
         <textarea className="text-input" value={input} onChange={this.handleInput} />
       </div>
     );

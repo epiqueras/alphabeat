@@ -19,7 +19,8 @@
   }
 }
 
-.play-pause {
+.play-pause,
+.share {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -45,5 +46,14 @@
 
   @include themify {
     color: theme(play-pause);
+  }
+}
+
+.share {
+  left: 10px;
+  font-family: 'Raleway', sans-serif;
+
+  &:active::after {
+    content: ' \2714';
   }
 }
