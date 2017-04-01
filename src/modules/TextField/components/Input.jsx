@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import { playSound, parseKeys, updateSounds } from '../soundUtils';
-import getUrlParameter from '../../urlUtils';
+import getUrlParameter, { encodeKeys } from '../../urlUtils';
 
 class Input extends Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class Input extends Component {
     const { input } = this.state;
     const { keys } = this.props;
 
-    const url = `${window.location.origin}/?t=${input}&c=${JSON.stringify(keys)}`;
+    const url = `${window.location.origin}/?t=${input}&c=${encodeKeys(JSON.stringify(keys))}`;
 
     const textArea = document.createElement('textarea');
 
