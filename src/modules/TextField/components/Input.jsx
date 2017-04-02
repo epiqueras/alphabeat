@@ -62,7 +62,7 @@ class Input extends Component {
     const { input } = this.state;
     const { keys } = this.props;
 
-    const url = `${window.location.origin}/?t=${input}&c=${encodeKeys(JSON.stringify(keys))}`;
+    const url = `${window.location.origin}${window.location.pathname}?t=${input}&c=${encodeKeys(JSON.stringify(keys))}`;
 
     const textArea = document.createElement('textarea');
 
