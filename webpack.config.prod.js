@@ -10,7 +10,7 @@ module.exports = {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     path: resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: '/alphabeat/',
   },
   context: resolve(__dirname),
   devtool: 'cheap-source-map',
