@@ -1,6 +1,5 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import Helmet from 'react-helmet';
 
 import App from './modules/App/App';
 
@@ -9,9 +8,6 @@ import './styles/index.scss';
 const AppRoot = ({ store }) => (
   <Provider store={store}>
     <div className="app-root">
-      <Helmet
-        title="Alphabeat"
-      />
       <App />
     </div>
   </Provider>
