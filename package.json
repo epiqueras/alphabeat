@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "build": "rimraf dist && NODE_ENV=production webpack --config webpack.config.prod.js",
-    "deploy": "git checkout gh-pages && git merge master",
+    "deploy": "git checkout gh-pages && git merge master"
   },
   "repository": {
     "type": "git",
